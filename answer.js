@@ -53,4 +53,28 @@ function validateUsername(username) {
 }
 
 // Question No. 4
+function getCngFare(distance, isNight = false, waitingMinutes = 0) {
+    const minFare = 50;
+    const defaultDistance = 2;
+    const chargePerKM = 15;
+    const waitingCharge = 2;
+    const nightTimeExtraFare = 0.2;
+
+    if(distance < defaultDistance) {
+        distance = defaultDistance;
+    }
+
+    distance = distance - defaultDistance
+
+    let totalFare = minFare + (distance * chargePerKM) + (waitingMinutes * waitingCharge);
+
+    if(isNight) {
+        const extraFare = totalFare * nightTimeExtraFare;
+
+        totalFare += extraFare;
+    }
+
+    return totalFare;
+}
+
 // Question No. 5
